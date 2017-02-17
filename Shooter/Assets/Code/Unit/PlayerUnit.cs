@@ -17,6 +17,21 @@ namespace TAMKShooter
 
 		[SerializeField] private UnitType _type;
 
+		private InputManager _inputManager;
+		public enum Controller {
+			None = 0,
+			WASD = 1,
+			UpDownLR = 2,
+			Gamepad1 = 3,
+			Gamepad2 = 4
+		}
+
+		public Controller _controlledBy;
+
+		private void Awake() {
+			_inputManager = GetComponent<InputManager> ();
+		}
+
 		public UnitType Type { get { return _type; } }
 		public PlayerData Data { get; private set; }
 
@@ -47,14 +62,14 @@ namespace TAMKShooter
 
 		protected void Update()
 		{
-			float horizontal = Input.GetAxis ( "Horizontal" );
-			float vertical = Input.GetAxis ( "Vertical" );
+			float horizontal = Input.GetAxis ( _inputManager.Hori );
+			float vertical = Input.GetAxis ( _inputManager.Verti );
 
 			Vector3 input = new Vector3 ( horizontal, 0, vertical );
 
 			Mover.MoveToDirection ( input );
 
-			bool shoot = Input.GetButton ( "Shoot" );
+			bool shoot = Input.GetButton ( _inputManager.Shoot );
 			if(shoot)
 			{
 				Weapons.Shoot ( ProjectileLayer );
