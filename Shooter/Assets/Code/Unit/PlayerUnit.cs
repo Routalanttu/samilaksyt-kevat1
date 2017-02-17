@@ -19,16 +19,15 @@ namespace TAMKShooter
 
 		private InputManager _inputManager;
 		public enum Controller {
-			None = 0,
-			WASD = 1,
-			UpDownLR = 2,
-			Gamepad1 = 3,
-			Gamepad2 = 4
+			WASD,
+			UpDownLR,
+			Gamepad1,
+			Gamepad2
 		}
 
 		public Controller _controlledBy;
 
-		private void Awake() {
+		private void Start() {
 			_inputManager = GetComponent<InputManager> ();
 		}
 

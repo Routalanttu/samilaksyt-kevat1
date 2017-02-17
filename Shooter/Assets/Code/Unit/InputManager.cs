@@ -8,9 +8,9 @@ namespace TAMKShooter {
 		private PlayerUnit _playerUnit;
 		private PlayerUnit.Controller _controlledBy;
 
-		public string _hori;
-		public string _verti;
-		public string _shoot;
+		public string _hori = "WASD_Hori";
+		public string _verti = "WASD_Verti";
+		public string _shoot = "WASD_Shoot";
 
 		public string Hori { get { return _hori; } }
 		public string Verti { get { return _verti; } }
