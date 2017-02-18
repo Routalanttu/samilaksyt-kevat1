@@ -18,14 +18,6 @@ namespace TAMKShooter
 		[SerializeField] private UnitType _type;
 
 		private InputManager _inputManager;
-		public enum Controller {
-			WASD,
-			UpDownLR,
-			Gamepad1,
-			Gamepad2
-		}
-
-		public Controller _controlledBy;
 
 		private void Start() {
 			_inputManager = GetComponent<InputManager> ();
@@ -61,15 +53,9 @@ namespace TAMKShooter
 
 		protected void Update()
 		{
-			float horizontal = Input.GetAxis ( _inputManager.Hori );
-			float vertical = Input.GetAxis ( _inputManager.Verti );
+			Mover.MoveToDirection ( _inputManager.DirectionalInput );
 
-			Vector3 input = new Vector3 ( horizontal, 0, vertical );
-
-			Mover.MoveToDirection ( input );
-
-			bool shoot = Input.GetButton ( _inputManager.Shoot );
-			if(shoot)
+			if(_inputManager.Shooting)
 			{
 				Weapons.Shoot ( ProjectileLayer );
 			}
