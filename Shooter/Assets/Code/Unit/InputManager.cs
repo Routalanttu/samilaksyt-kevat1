@@ -8,11 +8,9 @@ namespace TAMKShooter {
 		private string _verti;
 		private string _shoot;
 
-		private bool _shooting;
-		public bool Shooting { get { return _shooting; } }
+		public bool Shooting { get; private set; }
 
-		private Vector3 _directionalInput;
-		public Vector3 DirectionalInput { get { return _directionalInput; } }
+		public Vector3 DirectionalInput { get; private set; }
 
 		public enum Controller {
 			WASD,
@@ -49,9 +47,9 @@ namespace TAMKShooter {
 			float horizontal = Input.GetAxis ( _hori );
 			float vertical = Input.GetAxis ( _verti );
 
-			_directionalInput = new Vector3 ( horizontal, 0, vertical );
+			DirectionalInput = new Vector3 ( horizontal, 0, vertical );
 
-			_shooting = Input.GetButton ( _shoot );
+			Shooting = Input.GetButton ( _shoot );
 		}
 	}
 }
